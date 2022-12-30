@@ -1,0 +1,50 @@
+﻿@*@model Library.Models.*@
+
+@{
+    var ItemSponsor = ViewData["ItemSponsor"];
+}
+<html>
+<head>
+    <title>
+    </title>
+</head>
+<body style="direction:rtl;position:center">
+
+
+    <div>
+
+        @using (Html.BeginForm("CreateBook", "Book", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+        {
+            <div>
+                <table>
+                    <tr style="background-color:#E6E6FA;">
+                        <th>عنوان کتاب</th>
+                        <td calss="padding">
+                            <input type="text" class="form-control col-4" name="title">
+
+                        </td>
+                        <th>نویسنده</th>
+                        <td calss="padding">
+                            <input type="text" class="form-control col-4" name="Author">
+                        </td>
+                        <th>سال نشر</th>
+                        <td calss="padding">
+                            <input type="text" class="form-control col-4" name="yearPublish">
+                        </td>
+                        <th>وضعیت</th>
+                        <td calss="padding">
+                            <input type="text" class="form-control col-4" name="status">
+                        </td>
+                    </tr>
+            </div>
+            
+
+        }
+        </table>
+        <button type="submit">ارسال</button>
+    </div>
+</body>
+</html>
+
+
+

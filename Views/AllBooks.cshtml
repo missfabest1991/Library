@@ -1,0 +1,82 @@
+﻿
+@*@model IEnumerable<Library.Models.LibararyModel>*@
+
+@{
+    //var Item = ViewData["Item"] as List<CustomerSponsor >;
+}
+
+
+
+
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+
+
+  <div class="card-header" >
+
+
+   
+      @using (Html.BeginForm("AllBooks", "Library", FormMethod.Get))
+        {
+     <div class="row">
+    <div class="col-4">
+  <input type="text" class="form-control col-4"  name="q" placeholder="وارد کنید">
+
+    </div>
+    <div class="col-4">
+        <input class="btn btn-primary" type="submit" value="جستجو"/>
+    </div>  
+   
+  </div>
+        }
+  </div>
+
+
+
+
+     <form method="post">
+
+       @* @Html.ActionLink("Create", "Create")
+        @Html.ActionLink("Cancel", "Cancel")*@
+
+        <br /><br />
+        <table border="1" cellpadding="50" align="center">
+            <tr>
+                <th>عنوان</th>
+                <th>نویسنده</th>
+                <th>سال نشر</th>
+                <th>زبان</th>
+                 <th>وضعیت </th>
+                <th colspan="4">عملیات</th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Title</td>
+                    <td>@item.Auther</td>
+                    <td>@item.YearPublish</td>
+                    <td>@item.Language</td>
+                    <td>@item.Status</td>
+                    <td>
+                        @Html.ActionLink("ویرایش", "Edit", new { id = item.TitleId })
+                    </td>
+                    <td>
+                        @Html.ActionLink("جزییات", "Details", new { id = item.TitleId })
+                    </td>
+
+                    <td>
+                        @Html.ActionLink("حذف", "Delete", new { id = item.TitleId },new { onclick = "return confirm('آیا از حذف این مورد مطمئن هستید؟');" })
+                    </td>
+
+                </tr>
+            }
+        </table>
+    </form>
+
+
+</body>
+</html>
